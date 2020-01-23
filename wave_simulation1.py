@@ -1,4 +1,5 @@
 from wave_point import Point
+from wave_graphics import my_graphics
 
 def next(prev_points,time_passed):
     new_points = prev_points
@@ -23,3 +24,4 @@ points = [Point(0,0,1,0),Point(0,1,1,0),Point(0,2,1,0),Point(0,3,1,0)]
 points = iterate(points,4,1)
 
 print_points(points)
+my_graphics.graph(points)
