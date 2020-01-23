@@ -1,5 +1,5 @@
 from wave_point import Point
-import graphics
+from wave_graphics import my_graphics
 
 def next(prev_points,time_passed):
     new_points = prev_points
@@ -19,17 +19,9 @@ def print_points(points):
     for p in points:
         print("X:",p.coords[0],"Y:",p.coords[1],"XV:",p.vel[0],"YV:",p.vel[1])
 
-def graph(points):
-    win = graphics.GraphWin("wave simulation", 500, 500)
-    for p in points:
-        point = graphics.Point(p.coords[0], p.coords[1])
-        point.draw(win)
-    win.getMouse()
-    win.close
-
 points = [Point(0,0,1,0),Point(0,1,1,0),Point(0,2,1,0),Point(0,3,1,0)]
 
 points = iterate(points,4,1)
 
 print_points(points)
-graph(points)
+my_graphics.graph(points)
