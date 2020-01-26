@@ -19,9 +19,14 @@ def print_points(points):
     for p in points:
         print("X:",p.coords[0],"Y:",p.coords[1],"XV:",p.vel[0],"YV:",p.vel[1])
 
-points = [Point(0,0,1,0),Point(0,1,1,0),Point(0,2,1,0),Point(0,3,1,0)]
+my_graphics.makewin()
 
-points = iterate(points,4,1)
+points = [Point(0,0,1,0),Point(0,10,1,0),Point(0,20,1,0),Point(0,30,1,0)]
+
+points = iterate(points,100,1)
 
 print_points(points)
-my_graphics.graph(points)
+
+my_graphics.array(points)
+my_graphics.closewin()
+
