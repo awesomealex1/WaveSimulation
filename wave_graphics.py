@@ -13,7 +13,12 @@ class Graph():
     def update_graph(self, points):
         for p in points:
             self.win.plot(p.x,p.y,graphics.color_rgb(p.color[0],p.color[1],p.color[2]))
-            #print(p.color[0],p.color[1],p.color[2])
+            if p.x == 20 and p.y == 30:
+                print(p.color[0],p.color[1],p.color[2])
+            if p.x == 20 and p.y == 40:
+                print(p.color[0],p.color[1],p.color[2])
+            if p.x == 20 and p.y == 50:
+                print(p.color[0],p.color[1],p.color[2])
         print("UPDATE1")
         graphics.update()
         print("UPDATE2")
