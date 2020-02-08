@@ -2,7 +2,6 @@ from math import sin,pi,sqrt,floor,ceil
 from wave_point import Point
 from wave_graphics import Graph
 import time
-import imageio
 import PIL
 
 amplitude = 2
@@ -25,10 +24,10 @@ def displacement_to_color(d):
 
 def simulate(time_total,time_step,graphics_time_step):
     for i in range(0,floor(time_total/time_step)):
-        next(time_step*i)
+        next(time_step*i,i)
         time.sleep(graphics_time_step)
 
-def next(current_time):
+def next(current_time,n_image):
     print("NEXT")
     print(current_time)
     displacements_on_line = [displacement(current_time,x) for x in range(0,width)] #First calculate the displacement for every pixel on a horizontal line, then use those values for circles intersecting specific pixel
@@ -38,8 +37,10 @@ def next(current_time):
             radius = sqrt((x-width_of_center)**2+(y-width_of_center)**2)
             if floor(radius) < len(displacements_on_line):
                 all_points.append(Point(x,y,color=[ceil(abs(displacement_to_color(displacements_on_line[floor(radius)]))),0,0]))
-    g.update_graph(all_points)
+            else:
+                all_points.append(Point(x,y,color=[0,0,0]))
+    g.update_graph(all_points,n_image)
 
 g = Graph(points,width,height)
 
-simulate(10,0.1,0)
+simulate(2,0.03,0)

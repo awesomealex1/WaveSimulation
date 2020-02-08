@@ -1,14 +1,33 @@
 from PIL import Image
+import numpy as np
+import imageio
+import os
 
-def write_image(name,pixels,width,height):
+def write_image(name,pixels,width,height,n_image):
     new_pixels = []
     count = 0
     for i in range(0,height):
         arr = []
         for j in range(0,height):
-            arr.append(new_pixels[count].color)
-            count++
+            arr.append(pixels[count].color)
+            count += 1
         new_pixels.append(arr)
-    print(new_pixels)
-    img = Image.fromarray(new_pixels)
-    img.save(name)
+    img = Image.fromarray(np.array(new_pixels, dtype=np.uint8))
+    img.save("C:\PythonPrograms\WaveSimulation\Images\\"+name+str(n_image)+".png")
+    if n_image == 60:
+        write_gif(name,61)
+
+def write_gif(name,n_images):
+    png_dir = "C:\PythonPrograms\WaveSimulation\Images"
+    images = []
+    for i in range(0,n_images):
+        file_path = os.path.join(png_dir, name+str(i)+".png")
+        images.append(imageio.imread(file_path))
+    '''
+    for file_name in os.listdir(png_dir):
+        if file_name.endswith('.png'):
+            print(file_name)
+            file_path = os.path.join(png_dir, file_name)
+            images.append(imageio.imread(file_path))
+    '''
+    imageio.mimsave('C:/PythonPrograms/WaveSimulation/Images/movie.gif', images)

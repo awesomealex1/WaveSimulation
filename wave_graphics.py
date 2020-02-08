@@ -1,16 +1,20 @@
 import graphics
+import image_gif
 
 class Graph():
 
     def __init__(self, points, width, height):
         self.win = graphics.GraphWin("Wave Simulation", width, height, autoflush=False)
+        self.width = width
+        self.height = height
         '''
         self.graphics_points = [[graphics.Point(x,y) for x in range(0,width)] for y in range(0,height)]
         for p in self.graphics_points:
             p.draw(self.win)
         '''
 
-    def update_graph(self, points):
+    def update_graph(self, points,n_image):
+        '''
         for p in points:
             self.win.plot(p.x,p.y,graphics.color_rgb(p.color[0],p.color[1],p.color[2]))
             if p.x == 20 and p.y == 30:
@@ -19,8 +23,10 @@ class Graph():
                 print(p.color[0],p.color[1],p.color[2])
             if p.x == 20 and p.y == 50:
                 print(p.color[0],p.color[1],p.color[2])
+        '''
         print("UPDATE1")
-        graphics.update()
+        image_gif.write_image("image",points,self.width,self.height,n_image)
+        #graphics.update()
         print("UPDATE2")
 
     '''
