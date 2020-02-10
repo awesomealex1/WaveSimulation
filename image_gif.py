@@ -23,11 +23,4 @@ def write_gif(name,n_images):
     for i in range(0,n_images):
         file_path = os.path.join(png_dir, name+str(i)+".png")
         images.append(imageio.imread(file_path))
-    '''
-    for file_name in os.listdir(png_dir):
-        if file_name.endswith('.png'):
-            print(file_name)
-            file_path = os.path.join(png_dir, file_name)
-            images.append(imageio.imread(file_path))
-    '''
     imageio.mimsave('C:/PythonPrograms/WaveSimulation/Images/movie.gif', images)
