@@ -3,6 +3,7 @@ from wave_point import Point
 from wave_graphics import Graph
 import time
 import PIL
+import image_gif
 
 amplitude = 2
 period = 0.5
@@ -13,8 +14,6 @@ height = 200
 
 height_of_center = 50
 width_of_center = 0
-
-points = []
 
 def displacement(t,x):
     return amplitude*sin(2*pi*(t/period-x/length))
@@ -29,16 +28,16 @@ def simulate(time_total,time_step,graphics_time_step):
 
 def next(current_time,n_image):
     displacements_on_line = [displacement(current_time,x) for x in range(0,width)] #First calculate the displacement for every pixel on a horizontal line, then use those values for circles intersecting specific pixel
-    all_points = []
+    points = []
+    
     for x in range(0,width):
         for y in range(0,height):
             radius = sqrt((x-width_of_center)**2+(y-width_of_center)**2)
             if floor(radius) < len(displacements_on_line):
-                all_points.append(Point(x,y,color=[ceil(abs(displacement_to_color(displacements_on_line[floor(radius)]))),0,0]))
+                points.append(Point(x,y,color=[ceil(abs(displacement_to_color(displacements_on_line[floor(radius)]))),0,0]))
             else:
-                all_points.append(Point(x,y,color=[0,0,0]))
-    g.update_graph(all_points,n_image)
+                points.append(Point(x,y,color=[0,0,0]))
 
-g = Graph(points,width,height)
+    image_gif.write_image("image",points,width,height,n_image)
 
-simulate(2,0.03,0)
+simulate(1,0.03,0)

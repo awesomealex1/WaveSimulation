@@ -14,8 +14,8 @@ def write_image(name,pixels,width,height,n_image):
         new_pixels.append(arr)
     img = Image.fromarray(np.array(new_pixels, dtype=np.uint8))
     img.save("C:\PythonPrograms\WaveSimulation\Images\\"+name+str(n_image)+".png")
-    if n_image == 60:
-        write_gif(name,61)
+    if n_image == 32:
+        write_gif(name,33)
 
 def write_gif(name,n_images):
     png_dir = "C:\PythonPrograms\WaveSimulation\Images"
