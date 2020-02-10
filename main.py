@@ -1,6 +1,5 @@
 from math import sin,pi,sqrt,floor,ceil
 from wave_point import Point
-from wave_graphics import Graph
 import time
 import PIL
 import image_gif
@@ -29,7 +28,7 @@ def simulate(time_total,time_step,graphics_time_step):
 def next(current_time,n_image):
     displacements_on_line = [displacement(current_time,x) for x in range(0,width)] #First calculate the displacement for every pixel on a horizontal line, then use those values for circles intersecting specific pixel
     points = []
-    
+
     for x in range(0,width):
         for y in range(0,height):
             radius = sqrt((x-width_of_center)**2+(y-width_of_center)**2)
