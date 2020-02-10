@@ -28,8 +28,6 @@ def simulate(time_total,time_step,graphics_time_step):
         time.sleep(graphics_time_step)
 
 def next(current_time,n_image):
-    print("NEXT")
-    print(current_time)
     displacements_on_line = [displacement(current_time,x) for x in range(0,width)] #First calculate the displacement for every pixel on a horizontal line, then use those values for circles intersecting specific pixel
     all_points = []
     for x in range(0,width):

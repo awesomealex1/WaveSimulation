@@ -24,10 +24,8 @@ class Graph():
             if p.x == 20 and p.y == 50:
                 print(p.color[0],p.color[1],p.color[2])
         '''
-        print("UPDATE1")
         image_gif.write_image("image",points,self.width,self.height,n_image)
         #graphics.update()
-        print("UPDATE2")
 
     '''
     def __init__(self, points):
