@@ -4,5 +4,4 @@ class Point:
         self.coords = [x,y]
         self.x = x
         self.y = y
-        self.vel = [vel_x,vel_y]
         self.color = color
