@@ -14,29 +14,30 @@ height = 200
 height_of_center = 50
 width_of_center = 0
 
-def displacement(t,x):
+def displacement(t,x):  #Returns displacement for point that has a distance x from the center at time t
     return amplitude*sin(2*pi*(t/period-x/length))
 
-def displacement_to_color(d):
-    return d/amplitude*255
+def displacement_to_color(d):   #Returns a color depending on displacement (negative displacemet gets same color as positive displacement)
+    return [ceil(abs(d/amplitude*255)),0,0]
 
-def simulate(time_total,time_step,graphics_time_step):
+def simulate(time_total,time_step):  #Simulate the wave
     for i in range(0,floor(time_total/time_step)):
         next(time_step*i,i)
-        time.sleep(graphics_time_step)
 
 def next(current_time,n_image):
     displacements_on_line = [displacement(current_time,x) for x in range(0,width)] #First calculate the displacement for every pixel on a horizontal line, then use those values for circles intersecting specific pixel
-    points = []
+    points = [] #List with all the points/pixels that will be in the gif
 
     for x in range(0,width):
         for y in range(0,height):
-            radius = sqrt((x-width_of_center)**2+(y-width_of_center)**2)
-            if floor(radius) < len(displacements_on_line):
-                points.append(Point(x,y,color=[ceil(abs(displacement_to_color(displacements_on_line[floor(radius)]))),0,0]))
+            distance = sqrt((x-width_of_center)**2+(y-width_of_center)**2)    #Calculate the distance from the center of the wave for the specific point
+            
+            #Assign a color depending on distance from center and then add point to points list. If the distance is so big, that its not in the displacements list, set the points color to black
+            if floor(distance) < len(displacements_on_line):
+                points.append(Point(x,y,color=displacement_to_color(displacements_on_line[floor(distance)])))
             else:
                 points.append(Point(x,y,color=[0,0,0]))
 
-    image_gif.write_image("image",points,width,height,n_image)
+    image_gif.write_image("image",points,width,height,n_image)  #Write an image that will be turned into a gif later on
 
-simulate(1,0.03,0)
+simulate(1,0.03)  #Start the creation of the gif
