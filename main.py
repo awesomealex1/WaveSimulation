@@ -37,9 +37,9 @@ def next(current_time,n_image):
             
             #Assign a color depending on distance from center and then add point to points list. If the distance is so big, that its not in the displacements list, set the points color to black
             if floor(distance) < len(displacements_on_line):
-                points.append(Point(x,y,color=displacement_to_color(displacements_on_line[floor(distance)])))
+                points.append(Point(displacement_to_color(displacements_on_line[floor(distance)])))
             else:
-                points.append(Point(x,y,color=[0,0,0]))
+                points.append(Point([0,0,0]))
 
     image_gif.write_image("image",points,width,height,n_image)  #Write an image that will be turned into a gif later on
 
