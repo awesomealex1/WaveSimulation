@@ -4,7 +4,7 @@ import imageio
 import os
 
 def write_image(name,pixels,width,height,n_image):
-    new_pixels = []
+    new_pixels = [] #Create pixel array which will store [r,g,b] colors
     count = 0
     for i in range(0,height):
         arr = []

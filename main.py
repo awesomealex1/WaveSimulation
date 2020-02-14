@@ -4,13 +4,16 @@ import time
 import PIL
 import image_gif
 
+#Wave specific properties
 amplitude = 2
 period = 0.5
 length = 20
 
+#Image and GIF properties
 width = 200
 height = 200
 
+#Location of wave center
 height_of_center = 50
 width_of_center = 0
 
@@ -39,5 +42,7 @@ def next(current_time,n_image):
                 points.append(Point(x,y,color=[0,0,0]))
 
     image_gif.write_image("image",points,width,height,n_image)  #Write an image that will be turned into a gif later on
+
+
 
 simulate(1,0.03)  #Start the creation of the gif
