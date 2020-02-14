@@ -5,9 +5,6 @@ import PIL
 import image_gif
 import os
 
-#Location of gif and images
-path = os.path
-
 #Wave specific properties
 amplitude = 2
 period = 0.5
@@ -18,8 +15,8 @@ width = 200
 height = 200
 
 #Location of wave center
-height_of_center = 50
-width_of_center = 0
+height_of_center = 100
+width_of_center = 100
 
 def displacement(t,x):  #Returns displacement for point that has a distance x from the center at time t
     return amplitude*sin(2*pi*(t/period-x/length))
@@ -37,7 +34,7 @@ def next(current_time,n_image):
 
     for x in range(0,width):
         for y in range(0,height):
-            distance = sqrt((x-width_of_center)**2+(y-width_of_center)**2)    #Calculate the distance from the center of the wave for the specific point
+            distance = sqrt((x-width_of_center)**2+(y-height_of_center)**2)    #Calculate the distance from the center of the wave for the specific point
             
             #Assign a color depending on distance from center and then add point to points list. If the distance is so big, that its not in the displacements list, set the points color to black
             if floor(distance) < len(displacements_on_line):
