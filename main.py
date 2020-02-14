@@ -3,6 +3,10 @@ from wave_point import Point
 import time
 import PIL
 import image_gif
+import os
+
+#Location of gif and images
+path = os.path
 
 #Wave specific properties
 amplitude = 2
@@ -41,7 +45,7 @@ def next(current_time,n_image):
             else:
                 points.append(Point([0,0,0]))
 
-    image_gif.write_image("image",points,width,height,n_image)  #Write an image that will be turned into a gif later on
+    image_gif.write_image(points,width,height,n_image)  #Write an image that will be turned into a gif later on
 
 
 
