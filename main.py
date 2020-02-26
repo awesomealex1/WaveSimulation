@@ -1,4 +1,4 @@
-from math import sin,pi,sqrt,floor,ceil
+pyfrom math import sin,pi,sqrt,floor,ceil
 from wave_point import Point
 import time
 import PIL
