@@ -47,4 +47,9 @@ def next(current_time,n_image):
 
     image_gif.write_image(points,width,height,n_image)  #Write an image that will be turned into a gif later on
 
+try:    #Make Images folder in case it doesn't exist yet
+    os.mkdir("Images")
+except: #Called if the folder already exists
+    print("Images folder already exists (Everything's fine)")
+
 simulate(1,0.03)  #Start the creation of the gif
