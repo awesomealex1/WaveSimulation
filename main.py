@@ -6,9 +6,9 @@ import image_gif
 import os
 
 #Wave specific properties
-amplitudes = [2,4]
-perdiods = [0.5, 0.5]
-lengths = [20,30]
+amplitudes = [2,2]
+perdiods = [0.5,0.5]
+lengths = [20,20]
 
 n_waves = len(amplitudes)
 max_amplitude = 0
@@ -20,8 +20,8 @@ width = 200
 height = 200
 
 #Location of wave centers
-height_of_centers = [100, 120]
-width_of_centers = [100, 80]
+height_of_centers = [199,0]
+width_of_centers = [199,0]
 
 def displacement(t,x,amplitude,period,length):  #Returns displacement for point that has a distance x from the center at time t
     return amplitude*sin(2*pi*(t/period-x/length))
